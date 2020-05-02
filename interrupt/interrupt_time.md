@@ -2,13 +2,13 @@
 
 The interruption is an important resource when using a microcontroler, and the easiest way to implement an interruption is using Arduino library.
 
-## ATmega328p -- Arduino Uno/Nano
+## ATmega328p - Arduino Uno/Nano
 
 The most common and wide spread plataform is the ATmega328p, in which the Arduino IDE is straight forward.
 
-<img src="images/arduino_uno.jpeg" alt="Arduino Uno" style="width:30%">
+<img src="images/arduino_uno.jpeg" alt="Arduino Uno" style="width:20%">
 
-<img src="images/arduino_nano.jpeg" alt="Arduino Nano" style="width:30%">
+<img src="images/arduino_nano.jpeg" alt="Arduino Nano" style="width:20%">
 
 ### Functions
 
