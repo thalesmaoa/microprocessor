@@ -6,9 +6,9 @@ The interruption is an important resource when using a microcontroler, and the e
 
 The most common and wide spread plataform is the ATmega328p, in which the Arduino IDE is straight forward.
 
-<img src="images/arduino_uno.jpeg" alt="Arduino Uno" style="width:20%">
+<img src="images/arduino_uno.jpeg" alt="Arduino Uno" style="width:40%">
 
-<img src="images/arduino_nano.jpeg" alt="Arduino Nano" style="width:20%">
+<img src="images/arduino_nano.jpeg" alt="Arduino Nano" style="width:40%">
 
 ### Functions
 
@@ -76,13 +76,54 @@ Clearly, using pre-difined functions are easier to develop. Programming using re
 
 Full code can be accessed [here](avr/) .
 
-## ESP32
+## Arduino Due
 
 In some cases, we just squeeze the chip to reach some desired output. From that poit, there are two options:
 1.  Just *Bit twiddler*, or
 2. improove the hardware.
 
+Arduino Due was first oficial Arduino ARM based board with Cortex-M3 32bit. The chip has a 84MHz suport and is presented bellow.
+
+<img src="images/arduino_due.jpg" alt="Arduino Due" style="width:40%">
+
+The same code is used and the result presented bellow.
+
+<img src="images/due_arduino_logic.png" alt="Logic Arduino Due" style="width:80%">
+
+The result, as expected shown a response time of 1.5us. A considerably performance increase using Arduino lib. 
+Despite of what people think, the clock cycle isn't linear with speed. It mainly depends on microprocessor arquiteture.
+
+## STM32
+
+A extremely cheap and good alternative is the Maple Mini / Blue Pill STM32F103C Series. This chip has full arduino support. The chip and its results are presented bellow.
+
+<img src="images/arduino_bluepill.png" alt="Blue pill" style="width:40%">
+
+### Arduino
+
+Using the arduino lubrary, the results are:
+
+<img src="images/bluepill_arduino_logic.png" alt="Logic Arduino Bluepill" style="width:80%">
+
+A better performance for a cheapper and smaller board with ARM Cortex-M3 and 72MHz. The time to process the result took only 2.33us. 
+
+However, the question remains. Can we increase that behaviour using native HAL drives provided by STM32?
+
+*TESTS*
+
+## ESP32
+
 ESP32 is a good and cheap hardware. The drawback is that documentation is not so good. Mainly user use it for IoT purposes, which doesn't demand real time applications and times are not so important.
+
+<img src="images/esp32_board.jpg" alt="Arduino Due" style="width:40%">
+
+### Arduino
+
+The same code was applied and the result keeps Due and Bluepill.
+
+<img src="images/esp32_arduino_logic.png" alt="Logic Arduino ESP32" style="width:80%">
+
+Also better than Arduino Due, but still looses to Bluepill. ESP32 can reach 240MHz 32bit LX6.
 
 ### Micropython
 
@@ -107,6 +148,10 @@ However, there is clear a trade-off pointed from the result bellow.
 <img src="images/esp32_micropython_logic.png" alt="Logic Arduino Nano AVR" style="width:80%">
 
 It took amazingly 38us to change the pin state. I must say that is quite disapponting. 
+
+In order to increase speed, some decorations must be applied to the code
+
+**Test**
 
 ### Arduino
 
