@@ -15,15 +15,15 @@ The most common and wide spread plataform is the ATmega328p, in which the Arduin
 The arduino define some functions that come to handy, such as `pinMode`,  `attachInterrupt` and `digitalWrite`. These are enough for the evaluation.
 
  Mainly, the pin function must be defined,
-	
-```
+
+```c
 pinMode(pin_out, OUTPUT);
 pinMode(pin_Interrup, INPUT_PULLUP);
 ```
 
 also, the pin which will be working as an interruption.
 
-```
+```c
 attachInterrupt(digitalPinToInterrupt(pin_Interrup), isr_Interruption, FALLING);
 ```
 
@@ -37,19 +37,19 @@ attachInterrupt(digitalPinToInterrupt(pin_Interrup), isr_Interruption, FALLING);
 Registers can be little tricky and must follow microprocessor datasheet.
 Using `INT2`, which is pin 2, we define it as input,
 
-```
+```c
 DDRD &= ~(1 << DDD2); // Low
 ```
 
 and put a pull up.
 
-```
+```c
 PORTD |= (1 << PORTD2); // High
 ```
 
 After that, the interruption is enabled.
 
-```
+```c
 EIMSK |= (1 << INT2); //High
 EICRA |= (1 << ISC21); // High
 EICRA &= ~(1 << ISC20); // Low
@@ -57,13 +57,13 @@ EICRA &= ~(1 << ISC20); // Low
 
 Also, enable the pin 5 as output.
 
-```
+```c
 DDRD |= (1 << DDD1); // High
 ```
 
 To toogle the port, we use a xor.
 
-```
+```c
 PORTD ^= (1 << PORTD2);
 ```
 
@@ -90,7 +90,7 @@ The same code is used and the result presented bellow.
 
 <img src="images/due_arduino_logic.png" alt="Logic Arduino Due" style="width:80%">
 
-The result, as expected shown a response time of 1.5us. A considerably performance increase using Arduino lib. 
+The result, as expected shown a response time of 1.5us. A considerably performance increase using Arduino lib.
 Despite of what people think, the clock cycle isn't linear with speed. It mainly depends on microprocessor arquiteture.
 
 ## STM32
@@ -105,7 +105,7 @@ Using the arduino lubrary, the results are:
 
 <img src="images/bluepill_arduino_logic.png" alt="Logic Arduino Bluepill" style="width:80%">
 
-A better performance for a cheapper and smaller board with ARM Cortex-M3 and 72MHz. The time to process the result took only 2.33us. 
+A better performance for a cheapper and smaller board with ARM Cortex-M3 and 72MHz. The time to process the result took only 2.33us.
 
 However, the question remains. Can we increase that behaviour using native HAL drives provided by STM32?
 
@@ -127,11 +127,11 @@ Also better than Arduino Due, but still looses to Bluepill. ESP32 can reach 240M
 
 ### Micropython
 
-Another advantage of the ESP32 is micropython. It's possible to program the chip using high level languace, such as python. 
+Another advantage of the ESP32 is micropython. It's possible to program the chip using high level languace, such as python.
 
 A simple code can trigger the expected result as presented above.
 
-```
+```python
 import machine
 
 def handle_interrupt(pin):
@@ -147,7 +147,7 @@ However, there is clear a trade-off pointed from the result bellow.
 
 <img src="images/esp32_micropython_logic.png" alt="Logic Arduino Nano AVR" style="width:80%">
 
-It took amazingly 38us to change the pin state. I must say that is quite disapponting. 
+It took amazingly 38us to change the pin state. I must say that is quite disapponting.
 
 In order to increase speed, some decorations must be applied to the code
 
