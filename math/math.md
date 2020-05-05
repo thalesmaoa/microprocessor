@@ -1,3 +1,13 @@
+
+# Math implementation and evaluation
+
+Another important need of a microprocessor is to perform basic math operations like multiply and divide. Using C code, variables must be defined in order to speed-up the processing time. We must keep that in mind during development.
+
+## Arduino code
+
+We mainly define some basic variables and perform some calculations and measure its time as presented bellow. Each math operation is performed 100 times.
+
+```c
 #include <Arduino.h>
 
 
@@ -100,3 +110,30 @@ void loop() {
   digitalWrite(pin_out, LOW);
 
 }
+```
+
+## Arduino Nano
+Using the ESP32, times are presented bellow:
+
+| Variable | Multiplication | Division |
+|---|---|---|
+| unsigned int8 | 3.708us | 3.667us |
+| unsigned int16 | 3.6678us | 3.667us |
+| unsigned int32 | 3.667us | 3.708us |
+| unsigned int64 | 3.667us |  3.708us |
+| float | 3.452us |  3.708us |
+
+
+
+
+## ESP32
+
+Using the ESP32, times are presented bellow:
+
+| Variable | Multiplication | Division |
+|---|---|---|
+| unsigned int8 | 3.958us | 5.167us |
+| unsigned int16 | 3.958us | 3.958us |
+| unsigned int32 | 3.542us | 3.958us |
+| unsigned int64 | 4.417us |  36.88us |
+| float | 3.452us |  80.62us |

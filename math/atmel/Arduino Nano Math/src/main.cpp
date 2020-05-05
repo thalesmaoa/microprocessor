@@ -2,7 +2,7 @@
 
 
 // Define pin to measure speed
-uint8_t pin_out = 27;
+uint8_t pin_out = 12;
 
 // Test math speeds
 uint8_t x_i8 = 12;
