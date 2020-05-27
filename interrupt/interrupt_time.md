@@ -149,9 +149,13 @@ However, there is clear a trade-off pointed from the result bellow.
 
 It took amazingly 38us to change the pin state. I must say that is quite disapponting.
 
-In order to increase speed, some decorations must be applied to the code
+#### PyB
 
-**Test**
+For a pyb v1.1, the performance is different.
+
+<img src="images/pyb_micropython_logic.png" alt="PyB Micropython" style="width:80%">
+
+The execution took 17.75us.
 
 ### Arduino
 
